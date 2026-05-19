@@ -88,6 +88,18 @@
   `;
   document.body.insertBefore(atmosphere, document.body.firstChild);
 
+  // ---- align watermark top to just below the sub-nav ----
+  const positionWatermark = () => {
+    const sub = document.querySelector('.subnav');
+    if (!sub) return;
+    const r = sub.getBoundingClientRect();
+    const top = r.bottom + window.scrollY + 8; // small breathing room
+    document.documentElement.style.setProperty('--watermark-top', `${top}px`);
+  };
+  positionWatermark();
+  window.addEventListener('resize', positionWatermark);
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(positionWatermark);
+
   // ---- sub-nav current page state ----
   const path = (location.pathname.split('/').pop() || 'index.html').toLowerCase();
   document.querySelectorAll('.subnav .nav a').forEach((a) => {
