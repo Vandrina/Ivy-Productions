@@ -167,6 +167,104 @@ body.is-embedded .atmosphere { opacity: 0.62; }
 body.is-embedded .subnav .brand { display: none; }
 body.is-embedded .subnav { justify-content: center; }
 
+/* ---------- subnav dropdown (Tools) ---------- */
+.subnav .nav { position: relative; }
+/* generalize separator so it works between any sibling, including .nav-group */
+.subnav .nav a + a::before,
+.subnav .nav > * + *::before {
+  content: '';
+  position: absolute;
+  left: -1px; top: 50%;
+  width: 1px; height: 10px;
+  background: #262626;
+  transform: translateY(-50%);
+}
+.subnav .nav-group { position: relative; display: inline-flex; align-items: center; }
+.subnav .nav-trigger {
+  font-family: inherit;
+  font-size: inherit;
+  letter-spacing: inherit;
+  text-transform: inherit;
+  color: #898e98;
+  background: transparent;
+  border: 0;
+  padding: 10px 14px;
+  cursor: pointer;
+  position: relative;
+}
+.subnav .nav-trigger:hover { color: var(--ink-bright); }
+.subnav .nav-trigger.current { color: var(--gold); }
+.subnav .nav-trigger.current::after {
+  content: '';
+  position: absolute;
+  left: 14px; right: 14px;
+  bottom: 4px;
+  height: 1px;
+  background: var(--gold);
+  opacity: 0.55;
+}
+.subnav .nav-trigger .caret {
+  display: inline-block;
+  margin-left: 4px;
+  font-size: 0.78em;
+  transition: transform 220ms ease;
+}
+.subnav .nav-group:hover .nav-trigger .caret,
+.subnav .nav-trigger[aria-expanded="true"] .caret {
+  transform: rotate(180deg);
+}
+.subnav .nav-dropdown {
+  position: absolute;
+  top: calc(100% + 6px);
+  left: 50%;
+  transform: translateX(-50%) translateY(-4px);
+  background: var(--bg-panel);
+  border: 1px solid var(--border);
+  padding: 6px 0;
+  min-width: 160px;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 220ms ease, transform 220ms ease;
+  z-index: 60;
+}
+.subnav .nav-dropdown::before {
+  content: '';
+  position: absolute;
+  top: -5px; left: 50%;
+  transform: translateX(-50%) rotate(45deg);
+  width: 8px; height: 8px;
+  background: var(--bg-panel);
+  border-top: 1px solid var(--border);
+  border-left: 1px solid var(--border);
+}
+.subnav .nav-group:hover .nav-dropdown,
+.subnav .nav-group:focus-within .nav-dropdown,
+.subnav .nav-trigger[aria-expanded="true"] + .nav-dropdown {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateX(-50%) translateY(0);
+}
+.subnav .nav-dropdown a {
+  display: block;
+  padding: 9px 18px;
+  color: #898e98;
+  text-decoration: none;
+  white-space: nowrap;
+  font-family: var(--mono);
+  font-size: 9px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  position: static; /* override any absolute from parent rules */
+}
+.subnav .nav-dropdown a::before { display: none; } /* no separator dots inside dropdown */
+.subnav .nav-dropdown a:hover { color: var(--ink-bright); background: rgba(200,164,90,0.05); }
+.subnav .nav-dropdown a.current { color: var(--gold); }
+/* hide hover-open on touch — JS handles tap */
+@media (hover: none) {
+  .subnav .nav-group:hover .nav-dropdown { opacity: 0; pointer-events: none; }
+}
+
+
 /* ---------- type primitives ---------- */
 
 .eyebrow {
@@ -661,12 +759,16 @@ body[data-ornament="lush"] .ivy { opacity: 1; }
     <span class="here">Web&nbsp;Work</span>
   </a>
   <div class="nav">
-    <a href="index.html">Index</a>
-    <a href="case-mcguire.html">McGuire</a>
-    <a href="case-shop.html">Apothecary</a>
-    <a href="case-cms.html">Semi-CMS</a>
-    <a href="case-java.html">Tools</a>
-    <a href="approach.html">Approach</a>
+    <a href="case-mcguire.html">Artist Portfolio</a>
+    <a href="case-shop.html">Shop</a>
+    <div class="nav-group">
+      <button class="nav-trigger" type="button" aria-haspopup="true" aria-expanded="false">Tools <span class="caret" aria-hidden="true">▾</span></button>
+      <div class="nav-dropdown" role="menu">
+        <a href="case-cms.html" role="menuitem">Semi-CMS</a>
+        <a href="case-java.html" role="menuitem">Tagger</a>
+      </div>
+    </div>
+    <a href="approach.html" class="current">Approach</a>
     <a href="inquire.html">Inquire</a>
   </div>
 </nav>
@@ -1563,5 +1665,34 @@ document.body.appendChild(__ivyTweaksRoot);
 ReactDOM.createRoot(__ivyTweaksRoot).render(<IvyTweaksApp />);
 
 </script>
+
+<script id="subnav-dropdown">
+(function () {
+  document.querySelectorAll('.subnav .nav-group').forEach(function (g) {
+    var btn = g.querySelector('.nav-trigger');
+    var menu = g.querySelector('.nav-dropdown');
+    if (!btn || !menu) return;
+    btn.addEventListener('click', function (e) {
+      e.stopPropagation();
+      var open = btn.getAttribute('aria-expanded') === 'true';
+      btn.setAttribute('aria-expanded', String(!open));
+    });
+    g.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape') {
+        btn.setAttribute('aria-expanded', 'false');
+        btn.focus();
+      }
+    });
+  });
+  document.addEventListener('click', function (e) {
+    document.querySelectorAll('.subnav .nav-trigger[aria-expanded="true"]').forEach(function (b) {
+      if (!b.closest('.nav-group').contains(e.target)) {
+        b.setAttribute('aria-expanded', 'false');
+      }
+    });
+  });
+})();
+</script>
+
 </body>
 </html>
