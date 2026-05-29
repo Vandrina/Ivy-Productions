@@ -161,6 +161,44 @@
   color: var(--faint);
 }
 
+.piece-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px;
+  margin-top: 26px;
+}
+
+.share-link-btn {
+  border: 1px solid rgba(201, 166, 107, 0.46);
+  background: rgba(201, 166, 107, 0.1);
+  color: var(--text);
+  border-radius: 999px;
+  padding: 10px 14px;
+  font: inherit;
+  font-size: 0.72rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.share-link-btn:hover {
+  border-color: rgba(201, 166, 107, 0.78);
+}
+
+.share-feedback {
+  color: var(--gold);
+  font-size: 0.78rem;
+  opacity: 0;
+  transform: translateY(2px);
+  transition: opacity 160ms ease, transform 160ms ease;
+}
+
+.share-feedback.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
 .content-warning {
   width: 100%;
   margin-top: 10px;
