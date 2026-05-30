@@ -12,7 +12,8 @@
 </head>
 <body data-screen-label="Writing — Archive" data-density="cozy" data-title-font="metamorphous" data-ornament="default">
 
-<img class="writing-watermark" src="../assets/site-images/gothic-window-watermark.svg" alt="" aria-hidden="true">
+<!-- Gothic window watermark temporarily removed until the corrected asset is ready. -->
+<!-- <img class="writing-watermark" src="../assets/site-images/gothic-window-watermark.svg" alt="" aria-hidden="true"> -->
 
 <nav class="mainnav" aria-label="Ivy main">
   <div class="mainnav-inner">
@@ -37,7 +38,6 @@
     <a href="index.html" class="current">Archive</a>
     <a href="#commissions">Commissions</a>
     <a href="#vault">Vault</a>
-    <a href="stats.html">Stats</a>
   </div>
 </nav>
 
@@ -135,6 +135,7 @@
     <a class="return right" href="#">Begin a commission</a>
   </div>
 
+  <!--
   <div class="related-strip">
     <div class="related-eyebrow">— If this resonates, try —</div>
     <div class="related-cards">
@@ -155,6 +156,7 @@
       </a>
     </div>
   </div>
+  -->
 
   <div style="text-align:center;margin-top:32px;">
     <img class="ivy ft flip" src="../assets/site-images/ivy-ornament.png" alt="" aria-hidden="true">
@@ -218,12 +220,6 @@
       button.textContent = '#' + tag;
       tagFilters.appendChild(button);
     });
-
-    var overflow = document.createElement('a');
-    overflow.className = 'tag-overflow';
-    overflow.href = 'stats.html';
-    overflow.textContent = 'all tags & weights →';
-    tagFilters.appendChild(overflow);
 
     formatFilters.addEventListener('click', function (event) {
       var button = event.target.closest('.filter-chip');
