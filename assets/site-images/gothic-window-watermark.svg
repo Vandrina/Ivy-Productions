@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 620" role="img" aria-label="gothic window watermark">
+  <defs>
+    <style>
+      .line{fill:none;stroke:#c8a45a;stroke-width:2.25;stroke-linecap:round;stroke-linejoin:round;opacity:.72}
+      .thin{fill:none;stroke:#c8a45a;stroke-width:1.35;stroke-linecap:round;stroke-linejoin:round;opacity:.52}
+      .wash{fill:#c8a45a;opacity:.035}
+    </style>
+    <g id="rose">
+      <circle class="line" cx="0" cy="0" r="38"/>
+      <circle class="thin" cx="0" cy="0" r="13"/>
+      <path class="thin" d="M0,-38 C10,-24 10,-15 0,-13 C-10,-15 -10,-24 0,-38Z"/>
+      <path class="thin" d="M0,38 C10,24 10,15 0,13 C-10,15 -10,24 0,38Z"/>
+      <path class="thin" d="M-38,0 C-24,-10 -15,-10 -13,0 C-15,10 -24,10 -38,0Z"/>
+      <path class="thin" d="M38,0 C24,-10 15,-10 13,0 C15,10 24,10 38,0Z"/>
+      <path class="thin" d="M-27,-27 C-10,-22 -4,-16 -9,-9 C-16,-4 -22,-10 -27,-27Z"/>
+      <path class="thin" d="M27,-27 C10,-22 4,-16 9,-9 C16,-4 22,-10 27,-27Z"/>
+      <path class="thin" d="M-27,27 C-10,22 -4,16 -9,9 C-16,4 -22,10 -27,27Z"/>
+      <path class="thin" d="M27,27 C10,22 4,16 9,9 C16,4 22,10 27,27Z"/>
+    </g>
+  </defs>
+
+  <path class="wash" d="M450 24c-101 72-152 166-152 282v265h304V306C602 190 551 96 450 24Z"/>
+  <path class="line" d="M450 24c-101 72-152 166-152 282v265h304V306C602 190 551 96 450 24Z"/>
+  <path class="thin" d="M450 74c-72 61-108 138-108 232v221h216V306C558 212 522 135 450 74Z"/>
+  <line class="thin" x1="450" y1="74" x2="450" y2="571"/>
+  <line class="thin" x1="342" y1="306" x2="558" y2="306"/>
+  <use href="#rose" x="450" y="198"/>
+
+  <path class="wash" d="M180 104c-72 52-108 122-108 210v257h216V314c0-88-36-158-108-210Z"/>
+  <path class="line" d="M180 104c-72 52-108 122-108 210v257h216V314c0-88-36-158-108-210Z"/>
+  <path class="thin" d="M180 148c-50 44-75 99-75 166v214h150V314c0-67-25-122-75-166Z"/>
+  <line class="thin" x1="180" y1="148" x2="180" y2="571"/>
+  <line class="thin" x1="105" y1="314" x2="255" y2="314"/>
+  <use href="#rose" x="180" y="236" transform="scale(.78)"/>
+
+  <path class="wash" d="M720 104c-72 52-108 122-108 210v257h216V314c0-88-36-158-108-210Z"/>
+  <path class="line" d="M720 104c-72 52-108 122-108 210v257h216V314c0-88-36-158-108-210Z"/>
+  <path class="thin" d="M720 148c-50 44-75 99-75 166v214h150V314c0-67-25-122-75-166Z"/>
+  <line class="thin" x1="720" y1="148" x2="720" y2="571"/>
+  <line class="thin" x1="645" y1="314" x2="795" y2="314"/>
+  <use href="#rose" x="720" y="236" transform="scale(.78)"/>
+</svg>
