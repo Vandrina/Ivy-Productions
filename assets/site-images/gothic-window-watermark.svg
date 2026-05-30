@@ -1,42 +1,51 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 620" role="img" aria-label="gothic window watermark">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 720" role="img" aria-label="gothic window watermark">
   <defs>
     <style>
-      .line{fill:none;stroke:#c8a45a;stroke-width:2.25;stroke-linecap:round;stroke-linejoin:round;opacity:.72}
-      .thin{fill:none;stroke:#c8a45a;stroke-width:1.35;stroke-linecap:round;stroke-linejoin:round;opacity:.52}
-      .wash{fill:#c8a45a;opacity:.035}
+      .lead{fill:none;stroke:#c8a45a;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round;opacity:.64}
+      .fine{fill:none;stroke:#c8a45a;stroke-width:1.25;stroke-linecap:round;stroke-linejoin:round;opacity:.42}
+      .wash{fill:#c8a45a;opacity:.025}
     </style>
-    <g id="rose">
-      <circle class="line" cx="0" cy="0" r="38"/>
-      <circle class="thin" cx="0" cy="0" r="13"/>
-      <path class="thin" d="M0,-38 C10,-24 10,-15 0,-13 C-10,-15 -10,-24 0,-38Z"/>
-      <path class="thin" d="M0,38 C10,24 10,15 0,13 C-10,15 -10,24 0,38Z"/>
-      <path class="thin" d="M-38,0 C-24,-10 -15,-10 -13,0 C-15,10 -24,10 -38,0Z"/>
-      <path class="thin" d="M38,0 C24,-10 15,-10 13,0 C15,10 24,10 38,0Z"/>
-      <path class="thin" d="M-27,-27 C-10,-22 -4,-16 -9,-9 C-16,-4 -22,-10 -27,-27Z"/>
-      <path class="thin" d="M27,-27 C10,-22 4,-16 9,-9 C16,-4 22,-10 27,-27Z"/>
-      <path class="thin" d="M-27,27 C-10,22 -4,16 -9,9 C-16,4 -22,10 -27,27Z"/>
-      <path class="thin" d="M27,27 C10,22 4,16 9,9 C16,4 22,10 27,27Z"/>
+
+    <g id="rose-window">
+      <circle class="lead" cx="0" cy="0" r="42"/>
+      <circle class="fine" cx="0" cy="0" r="30"/>
+      <circle class="fine" cx="0" cy="0" r="9"/>
+      <path class="fine" d="M0,-9 C15,-22 15,-37 0,-42 C-15,-37 -15,-22 0,-9Z"/>
+      <path class="fine" d="M9,0 C22,-15 37,-15 42,0 C37,15 22,15 9,0Z"/>
+      <path class="fine" d="M0,9 C15,22 15,37 0,42 C-15,37 -15,22 0,9Z"/>
+      <path class="fine" d="M-9,0 C-22,-15 -37,-15 -42,0 C-37,15 -22,15 -9,0Z"/>
+      <path class="fine" d="M6,-6 C23,-9 34,-20 30,-30 C20,-34 9,-23 6,-6Z"/>
+      <path class="fine" d="M6,6 C23,9 34,20 30,30 C20,34 9,23 6,6Z"/>
+      <path class="fine" d="M-6,6 C-23,9 -34,20 -30,30 C-20,34 -9,23 -6,6Z"/>
+      <path class="fine" d="M-6,-6 C-23,-9 -34,-20 -30,-30 C-20,-34 -9,-23 -6,-6Z"/>
+      <line class="fine" x1="0" y1="-42" x2="0" y2="42"/>
+      <line class="fine" x1="-42" y1="0" x2="42" y2="0"/>
+      <line class="fine" x1="-30" y1="-30" x2="30" y2="30"/>
+      <line class="fine" x1="30" y1="-30" x2="-30" y2="30"/>
     </g>
   </defs>
 
-  <path class="wash" d="M450 24c-101 72-152 166-152 282v265h304V306C602 190 551 96 450 24Z"/>
-  <path class="line" d="M450 24c-101 72-152 166-152 282v265h304V306C602 190 551 96 450 24Z"/>
-  <path class="thin" d="M450 74c-72 61-108 138-108 232v221h216V306C558 212 522 135 450 74Z"/>
-  <line class="thin" x1="450" y1="74" x2="450" y2="571"/>
-  <line class="thin" x1="342" y1="306" x2="558" y2="306"/>
-  <use href="#rose" x="450" y="198"/>
+  <!-- left lancet -->
+  <path class="wash" d="M300 118 C235 174 202 244 202 330 L202 660 L398 660 L398 330 C398 244 365 174 300 118Z"/>
+  <path class="lead" d="M300 118 C235 174 202 244 202 330 L202 660 L398 660 L398 330 C398 244 365 174 300 118Z"/>
+  <path class="fine" d="M300 162 C253 207 230 263 230 330 L230 626 L370 626 L370 330 C370 263 347 207 300 162Z"/>
+  <line class="fine" x1="300" y1="162" x2="300" y2="660"/>
+  <line class="fine" x1="230" y1="330" x2="370" y2="330"/>
+  <g transform="translate(300 260) scale(.78)"><use href="#rose-window"/></g>
 
-  <path class="wash" d="M180 104c-72 52-108 122-108 210v257h216V314c0-88-36-158-108-210Z"/>
-  <path class="line" d="M180 104c-72 52-108 122-108 210v257h216V314c0-88-36-158-108-210Z"/>
-  <path class="thin" d="M180 148c-50 44-75 99-75 166v214h150V314c0-67-25-122-75-166Z"/>
-  <line class="thin" x1="180" y1="148" x2="180" y2="571"/>
-  <line class="thin" x1="105" y1="314" x2="255" y2="314"/>
-  <use href="#rose" x="180" y="236" transform="scale(.78)"/>
+  <!-- center lancet -->
+  <path class="wash" d="M600 38 C509 112 464 207 464 324 L464 660 L736 660 L736 324 C736 207 691 112 600 38Z"/>
+  <path class="lead" d="M600 38 C509 112 464 207 464 324 L464 660 L736 660 L736 324 C736 207 691 112 600 38Z"/>
+  <path class="fine" d="M600 92 C535 153 502 230 502 324 L502 626 L698 626 L698 324 C698 230 665 153 600 92Z"/>
+  <line class="fine" x1="600" y1="92" x2="600" y2="660"/>
+  <line class="fine" x1="502" y1="324" x2="698" y2="324"/>
+  <g transform="translate(600 212) scale(1)"><use href="#rose-window"/></g>
 
-  <path class="wash" d="M720 104c-72 52-108 122-108 210v257h216V314c0-88-36-158-108-210Z"/>
-  <path class="line" d="M720 104c-72 52-108 122-108 210v257h216V314c0-88-36-158-108-210Z"/>
-  <path class="thin" d="M720 148c-50 44-75 99-75 166v214h150V314c0-67-25-122-75-166Z"/>
-  <line class="thin" x1="720" y1="148" x2="720" y2="571"/>
-  <line class="thin" x1="645" y1="314" x2="795" y2="314"/>
-  <use href="#rose" x="720" y="236" transform="scale(.78)"/>
+  <!-- right lancet -->
+  <path class="wash" d="M900 118 C835 174 802 244 802 330 L802 660 L998 660 L998 330 C998 244 965 174 900 118Z"/>
+  <path class="lead" d="M900 118 C835 174 802 244 802 330 L802 660 L998 660 L998 330 C998 244 965 174 900 118Z"/>
+  <path class="fine" d="M900 162 C853 207 830 263 830 330 L830 626 L970 626 L970 330 C970 263 947 207 900 162Z"/>
+  <line class="fine" x1="900" y1="162" x2="900" y2="660"/>
+  <line class="fine" x1="830" y1="330" x2="970" y2="330"/>
+  <g transform="translate(900 260) scale(.78)"><use href="#rose-window"/></g>
 </svg>
