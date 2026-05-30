@@ -2,7 +2,23 @@
   <defs>
     <style>
       .gold{fill:none;stroke:#c8a45a;stroke-linecap:round;stroke-linejoin:round}
+      .pane{fill:none;stroke:#c8a45a;stroke-width:.45;stroke-linecap:round;stroke-linejoin:round;opacity:.32}
+      .rose{fill:none;stroke:#c8a45a;stroke-linecap:round;stroke-linejoin:round;opacity:.76}
     </style>
+    <g id="rose-large">
+      <circle class="rose" cx="0" cy="0" r="62" stroke-width="1.35"/>
+      <circle class="rose" cx="0" cy="0" r="47" stroke-width=".72" opacity=".52"/>
+      <circle class="rose" cx="0" cy="0" r="12" stroke-width=".75"/>
+      <path class="rose" d="M0,-12 C14,-25 14,-48 0,-62 C-14,-48 -14,-25 0,-12Z" stroke-width=".72"/>
+      <path class="rose" d="M10,-6 C28,-9 45,-30 44,-50 C25,-44 10,-25 10,-6Z" stroke-width=".62"/>
+      <path class="rose" d="M10,6 C28,9 45,30 44,50 C25,44 10,25 10,6Z" stroke-width=".62"/>
+      <path class="rose" d="M0,12 C14,25 14,48 0,62 C-14,48 -14,25 0,12Z" stroke-width=".72"/>
+      <path class="rose" d="M-10,6 C-28,9 -45,30 -44,50 C-25,44 -10,25 -10,6Z" stroke-width=".62"/>
+      <path class="rose" d="M-10,-6 C-28,-9 -45,-30 -44,-50 C-25,-44 -10,-25 -10,-6Z" stroke-width=".62"/>
+      <line class="rose" x1="0" y1="-62" x2="0" y2="62" stroke-width=".42" opacity=".45"/>
+      <line class="rose" x1="-53.7" y1="-31" x2="53.7" y2="31" stroke-width=".42" opacity=".45"/>
+      <line class="rose" x1="53.7" y1="-31" x2="-53.7" y2="31" stroke-width=".42" opacity=".45"/>
+    </g>
   </defs>
 
   <!-- Center: original dominant gothic window geometry from WIP. -->
@@ -13,19 +29,23 @@
     <path class="gold" d="M -240,400 C -172,300 -62,245 0,218" stroke-width="1.3"/>
     <path class="gold" d="M 240,400 C 172,300 62,245 0,218" stroke-width="1.3"/>
 
-    <circle class="gold" cx="0" cy="140" r="62" stroke-width="1.4"/>
-    <circle class="gold" cx="0" cy="140" r="12" stroke-width="0.8"/>
-    <circle class="gold" cx="0" cy="96" r="26" stroke-width="0.9"/>
-    <circle class="gold" cx="-34" cy="162" r="26" stroke-width="0.9"/>
-    <circle class="gold" cx="34" cy="162" r="26" stroke-width="0.9"/>
+    <use href="#rose-large" x="0" y="140"/>
 
     <line class="gold" x1="-120" y1="620" x2="-120" y2="400" stroke-width="0.85"/>
     <line class="gold" x1="120" y1="620" x2="120" y2="400" stroke-width="0.85"/>
     <line class="gold" x1="-240" y1="510" x2="240" y2="510" stroke-width="0.7" opacity="0.7"/>
-    <path class="gold" d="M -180,470 C -180,450 -160,440 -150,455 C -140,440 -120,450 -120,470" stroke-width="0.65"/>
-    <path class="gold" d="M -60,470 C -60,450 -40,440 -30,455 C -20,440 0,450 0,470" stroke-width="0.65"/>
-    <path class="gold" d="M 0,470 C 0,450 20,440 30,455 C 40,440 60,450 60,470" stroke-width="0.65"/>
-    <path class="gold" d="M 120,470 C 120,450 140,440 150,455 C 160,440 180,450 180,470" stroke-width="0.65"/>
+
+    <!-- subtle lower panes -->
+    <line class="pane" x1="-180" y1="400" x2="-180" y2="620"/>
+    <line class="pane" x1="-60" y1="400" x2="-60" y2="620"/>
+    <line class="pane" x1="60" y1="400" x2="60" y2="620"/>
+    <line class="pane" x1="180" y1="400" x2="180" y2="620"/>
+    <line class="pane" x1="-240" y1="455" x2="240" y2="455"/>
+    <line class="pane" x1="-240" y1="565" x2="240" y2="565"/>
+    <path class="pane" d="M -205,400 C -180,360 -150,335 -120,316"/>
+    <path class="pane" d="M -35,400 C -25,350 -10,302 0,270"/>
+    <path class="pane" d="M 35,400 C 25,350 10,302 0,270"/>
+    <path class="pane" d="M 205,400 C 180,360 150,335 120,316"/>
   </g>
 
   <!-- Left flanking lancet: original WIP placement and proportions. -->
@@ -35,12 +55,13 @@
     <line class="gold" x1="-110" y1="325" x2="110" y2="325" stroke-width="1"/>
     <path class="gold" d="M -110,325 C -78,255 -32,222 0,198" stroke-width="1"/>
     <path class="gold" d="M 110,325 C 78,255 32,222 0,198" stroke-width="1"/>
-    <circle class="gold" cx="0" cy="135" r="40" stroke-width="1"/>
-    <circle class="gold" cx="0" cy="135" r="7.75" stroke-width="0.6"/>
-    <circle class="gold" cx="0" cy="106.6" r="16.8" stroke-width="0.65"/>
-    <circle class="gold" cx="-21.9" cy="149.2" r="16.8" stroke-width="0.65"/>
-    <circle class="gold" cx="21.9" cy="149.2" r="16.8" stroke-width="0.65"/>
+    <g transform="translate(0 135) scale(.645)"><use href="#rose-large"/></g>
     <line class="gold" x1="0" y1="460" x2="0" y2="325" stroke-width="0.7" opacity="0.6"/>
+    <line class="pane" x1="-55" y1="325" x2="-55" y2="460"/>
+    <line class="pane" x1="55" y1="325" x2="55" y2="460"/>
+    <line class="pane" x1="-110" y1="392" x2="110" y2="392"/>
+    <path class="pane" d="M -72,325 C -50,280 -26,235 0,208"/>
+    <path class="pane" d="M 72,325 C 50,280 26,235 0,208"/>
   </g>
 
   <!-- Right flanking lancet: original WIP placement and proportions. -->
@@ -50,12 +71,13 @@
     <line class="gold" x1="-110" y1="325" x2="110" y2="325" stroke-width="1"/>
     <path class="gold" d="M -110,325 C -78,255 -32,222 0,198" stroke-width="1"/>
     <path class="gold" d="M 110,325 C 78,255 32,222 0,198" stroke-width="1"/>
-    <circle class="gold" cx="0" cy="135" r="40" stroke-width="1"/>
-    <circle class="gold" cx="0" cy="135" r="7.75" stroke-width="0.6"/>
-    <circle class="gold" cx="0" cy="106.6" r="16.8" stroke-width="0.65"/>
-    <circle class="gold" cx="-21.9" cy="149.2" r="16.8" stroke-width="0.65"/>
-    <circle class="gold" cx="21.9" cy="149.2" r="16.8" stroke-width="0.65"/>
+    <g transform="translate(0 135) scale(.645)"><use href="#rose-large"/></g>
     <line class="gold" x1="0" y1="460" x2="0" y2="325" stroke-width="0.7" opacity="0.6"/>
+    <line class="pane" x1="-55" y1="325" x2="-55" y2="460"/>
+    <line class="pane" x1="55" y1="325" x2="55" y2="460"/>
+    <line class="pane" x1="-110" y1="392" x2="110" y2="392"/>
+    <path class="pane" d="M -72,325 C -50,280 -26,235 0,208"/>
+    <path class="pane" d="M 72,325 C 50,280 26,235 0,208"/>
   </g>
 
   <line class="gold" x1="-800" y1="620" x2="800" y2="620" stroke-width="0.7" opacity="0.55"/>
