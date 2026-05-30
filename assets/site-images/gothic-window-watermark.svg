@@ -1,38 +1,40 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="-800 0 1600 620" role="img" aria-label="gothic window watermark" preserveAspectRatio="xMidYMin meet">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-800 0 1600 640" role="img" aria-label="gothic window watermark" preserveAspectRatio="xMidYMin meet">
   <defs>
     <style>
-      .stone{fill:none;stroke:#c8a45a;stroke-linecap:round;stroke-linejoin:round;opacity:.20}
-      .stone2{fill:none;stroke:#c8a45a;stroke-linecap:round;stroke-linejoin:round;opacity:.12}
+      .stone{fill:none;stroke:#c8a45a;stroke-linecap:round;stroke-linejoin:round;opacity:.18}
+      .stone2{fill:none;stroke:#c8a45a;stroke-linecap:round;stroke-linejoin:round;opacity:.11}
       .gold{fill:none;stroke:#c8a45a;stroke-linecap:round;stroke-linejoin:round}
       .pane{fill:none;stroke:#c8a45a;stroke-width:.45;stroke-linecap:round;stroke-linejoin:round;opacity:.32}
       .rose{fill:none;stroke:#c8a45a;stroke-linecap:round;stroke-linejoin:round;opacity:.74}
     </style>
     <g id="rose-large">
-      <circle class="rose" cx="0" cy="0" r="62" stroke-width="1.25"/>
-      <circle class="rose" cx="0" cy="0" r="48" stroke-width=".55" opacity=".42"/>
-      <circle class="rose" cx="0" cy="0" r="10" stroke-width=".7"/>
-      <path class="rose" d="M0,-10 C10,-24 17,-45 0,-62 C-17,-45 -10,-24 0,-10Z" stroke-width=".72"/>
-      <path class="rose" d="M8,-6 C27,-12 42,-32 48,-52 C30,-45 12,-25 8,-6Z" stroke-width=".64"/>
-      <path class="rose" d="M9,3 C30,8 50,20 58,38 C36,38 15,22 9,3Z" stroke-width=".64"/>
-      <path class="rose" d="M3,9 C13,27 13,48 0,62 C-13,48 -13,27 -3,9Z" stroke-width=".7"/>
-      <path class="rose" d="M-9,3 C-30,8 -50,20 -58,38 C-36,38 -15,22 -9,3Z" stroke-width=".64"/>
-      <path class="rose" d="M-8,-6 C-27,-12 -42,-32 -48,-52 C-30,-45 -12,-25 -8,-6Z" stroke-width=".64"/>
-      <path class="rose" d="M0,-48 C12,-34 12,-20 0,-10 C-12,-20 -12,-34 0,-48Z" stroke-width=".45" opacity=".5"/>
-      <path class="rose" d="M41,-24 C26,-24 15,-15 8,-6 C20,-7 33,-14 41,-24Z" stroke-width=".45" opacity=".5"/>
-      <path class="rose" d="M41,24 C28,17 17,10 9,3 C22,2 35,9 41,24Z" stroke-width=".45" opacity=".5"/>
-      <path class="rose" d="M0,48 C10,33 9,20 3,9 C-9,20 -10,33 0,48Z" stroke-width=".45" opacity=".5"/>
-      <path class="rose" d="M-41,24 C-28,17 -17,10 -9,3 C-22,2 -35,9 -41,24Z" stroke-width=".45" opacity=".5"/>
-      <path class="rose" d="M-41,-24 C-26,-24 -15,-15 -8,-6 C-20,-7 -33,-14 -41,-24Z" stroke-width=".45" opacity=".5"/>
+      <circle class="rose" cx="0" cy="0" r="62" stroke-width="1.15"/>
+      <circle class="rose" cx="0" cy="0" r="12" stroke-width=".62" opacity=".7"/>
+
+      <!-- bat / web tracery -->
+      <path class="rose" d="M0,-58 C10,-42 18,-26 8,-10 C4,-5 2,-2 0,0 C-2,-2 -4,-5 -8,-10 C-18,-26 -10,-42 0,-58Z" stroke-width=".72"/>
+      <path class="rose" d="M-8,-10 C-34,-20 -48,-36 -58,-52 C-49,-28 -36,-9 -12,0" stroke-width=".72"/>
+      <path class="rose" d="M8,-10 C34,-20 48,-36 58,-52 C49,-28 36,-9 12,0" stroke-width=".72"/>
+      <path class="rose" d="M-12,0 C-36,8 -54,20 -62,38 C-38,35 -20,22 -4,8" stroke-width=".68"/>
+      <path class="rose" d="M12,0 C36,8 54,20 62,38 C38,35 20,22 4,8" stroke-width=".68"/>
+      <path class="rose" d="M-4,8 C-13,24 -13,44 0,58 C13,44 13,24 4,8" stroke-width=".66"/>
+
+      <!-- webbing ribs -->
+      <path class="rose" d="M0,-58 L0,58" stroke-width=".38" opacity=".45"/>
+      <path class="rose" d="M-58,-52 C-35,-35 -18,-18 0,0 C18,-18 35,-35 58,-52" stroke-width=".38" opacity=".42"/>
+      <path class="rose" d="M-62,38 C-38,22 -18,10 0,0 C18,10 38,22 62,38" stroke-width=".38" opacity=".42"/>
+      <path class="rose" d="M-40,-22 C-24,-16 -10,-8 0,0 C10,-8 24,-16 40,-22" stroke-width=".34" opacity=".38"/>
+      <path class="rose" d="M-43,23 C-25,16 -11,8 0,0 C11,8 25,16 43,23" stroke-width=".34" opacity=".38"/>
     </g>
   </defs>
 
   <!-- Center stone setting -->
-  <path class="stone" d="M -270,620 L -270,292 C -270,104 -134,32 0,22 C 134,32 270,104 270,292 L 270,620" stroke-width="10"/>
-  <path class="stone2" d="M -254,620 L -254,296 C -254,116 -126,46 0,36 C 126,46 254,116 254,296 L 254,620" stroke-width="3"/>
+  <path class="stone" d="M -270,632 L -270,292 C -270,104 -134,32 0,22 C 134,32 270,104 270,292 L 270,632 L -270,632Z" stroke-width="8"/>
+  <path class="stone2" d="M -254,624 L -254,296 C -254,116 -126,46 0,36 C 126,46 254,116 254,296 L 254,624 L -254,624Z" stroke-width="2.5"/>
 
   <!-- Center: original dominant gothic window geometry from WIP. -->
   <g>
-    <path class="gold" d="M -240,620 L -240,300 C -240,128 -120,60 0,50 C 120,60 240,128 240,300 L 240,620" stroke-width="2.4"/>
+    <path class="gold" d="M -240,620 L -240,300 C -240,128 -120,60 0,50 C 120,60 240,128 240,300 L 240,620 L -240,620Z" stroke-width="2.4"/>
     <line class="gold" x1="0" y1="620" x2="0" y2="218" stroke-width="1.6"/>
     <line class="gold" x1="-240" y1="400" x2="240" y2="400" stroke-width="1.3"/>
     <path class="gold" d="M -240,400 C -172,300 -62,245 0,218" stroke-width="1.3"/>
@@ -54,13 +56,16 @@
     <path class="pane" d="M -35,400 C -25,350 -10,302 0,270"/>
     <path class="pane" d="M 35,400 C 25,350 10,302 0,270"/>
     <path class="pane" d="M 205,400 C 180,360 150,335 120,316"/>
+
+    <path class="stone2" d="M -260,632 L 260,632" stroke-width="10" opacity=".16"/>
+    <path class="gold" d="M -252,620 L 252,620" stroke-width="1" opacity=".55"/>
   </g>
 
   <!-- Left stone setting -->
   <g transform="translate(-560,150)">
-    <path class="stone" d="M -132,460 L -132,260 C -132,126 -66,70 0,58 C 66,70 132,126 132,260 L 132,460" stroke-width="8"/>
-    <path class="stone2" d="M -120,460 L -120,263 C -120,136 -60,80 0,70 C 60,80 120,136 120,263 L 120,460" stroke-width="2.5"/>
-    <path class="gold" d="M -110,460 L -110,265 C -110,145 -55,90 0,80 C 55,90 110,145 110,265 L 110,460" stroke-width="1.8"/>
+    <path class="stone" d="M -132,472 L -132,260 C -132,126 -66,70 0,58 C 66,70 132,126 132,260 L 132,472 L -132,472Z" stroke-width="7"/>
+    <path class="stone2" d="M -120,466 L -120,263 C -120,136 -60,80 0,70 C 60,80 120,136 120,263 L 120,466 L -120,466Z" stroke-width="2"/>
+    <path class="gold" d="M -110,460 L -110,265 C -110,145 -55,90 0,80 C 55,90 110,145 110,265 L 110,460 L -110,460Z" stroke-width="1.8"/>
     <line class="gold" x1="0" y1="460" x2="0" y2="198" stroke-width="1.2"/>
     <line class="gold" x1="-110" y1="325" x2="110" y2="325" stroke-width="1"/>
     <path class="gold" d="M -110,325 C -78,255 -32,222 0,198" stroke-width="1"/>
@@ -72,13 +77,15 @@
     <line class="pane" x1="-110" y1="392" x2="110" y2="392"/>
     <path class="pane" d="M -72,325 C -50,280 -26,235 0,208"/>
     <path class="pane" d="M 72,325 C 50,280 26,235 0,208"/>
+    <path class="stone2" d="M -128,472 L 128,472" stroke-width="8" opacity=".14"/>
+    <path class="gold" d="M -118,460 L 118,460" stroke-width=".85" opacity=".5"/>
   </g>
 
   <!-- Right stone setting -->
   <g transform="translate(560,150)">
-    <path class="stone" d="M -132,460 L -132,260 C -132,126 -66,70 0,58 C 66,70 132,126 132,260 L 132,460" stroke-width="8"/>
-    <path class="stone2" d="M -120,460 L -120,263 C -120,136 -60,80 0,70 C 60,80 120,136 120,263 L 120,460" stroke-width="2.5"/>
-    <path class="gold" d="M -110,460 L -110,265 C -110,145 -55,90 0,80 C 55,90 110,145 110,265 L 110,460" stroke-width="1.8"/>
+    <path class="stone" d="M -132,472 L -132,260 C -132,126 -66,70 0,58 C 66,70 132,126 132,260 L 132,472 L -132,472Z" stroke-width="7"/>
+    <path class="stone2" d="M -120,466 L -120,263 C -120,136 -60,80 0,70 C 60,80 120,136 120,263 L 120,466 L -120,466Z" stroke-width="2"/>
+    <path class="gold" d="M -110,460 L -110,265 C -110,145 -55,90 0,80 C 55,90 110,145 110,265 L 110,460 L -110,460Z" stroke-width="1.8"/>
     <line class="gold" x1="0" y1="460" x2="0" y2="198" stroke-width="1.2"/>
     <line class="gold" x1="-110" y1="325" x2="110" y2="325" stroke-width="1"/>
     <path class="gold" d="M -110,325 C -78,255 -32,222 0,198" stroke-width="1"/>
@@ -90,7 +97,7 @@
     <line class="pane" x1="-110" y1="392" x2="110" y2="392"/>
     <path class="pane" d="M -72,325 C -50,280 -26,235 0,208"/>
     <path class="pane" d="M 72,325 C 50,280 26,235 0,208"/>
+    <path class="stone2" d="M -128,472 L 128,472" stroke-width="8" opacity=".14"/>
+    <path class="gold" d="M -118,460 L 118,460" stroke-width=".85" opacity=".5"/>
   </g>
-
-  <line class="gold" x1="-800" y1="620" x2="800" y2="620" stroke-width="0.7" opacity="0.55"/>
 </svg>
