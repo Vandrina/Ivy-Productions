@@ -9,29 +9,47 @@
     </style>
     <g id="rose-large">
       <circle class="rose" cx="0" cy="0" r="62" stroke-width="1.15"/>
-      <circle class="rose" cx="0" cy="0" r="44" stroke-width=".52" opacity=".44"/>
-      <circle class="rose" cx="0" cy="0" r="26" stroke-width=".46" opacity=".38"/>
-      <circle class="rose" cx="0" cy="0" r="8" stroke-width=".58" opacity=".68"/>
+      <circle class="rose" cx="0" cy="0" r="7" stroke-width=".55" opacity=".62"/>
 
       <!-- spiderweb spokes -->
-      <line class="rose" x1="0" y1="0" x2="0" y2="-62" stroke-width=".58"/>
-      <line class="rose" x1="0" y1="0" x2="43.8" y2="-43.8" stroke-width=".46"/>
-      <line class="rose" x1="0" y1="0" x2="62" y2="0" stroke-width=".46"/>
-      <line class="rose" x1="0" y1="0" x2="43.8" y2="43.8" stroke-width=".46"/>
-      <line class="rose" x1="0" y1="0" x2="0" y2="62" stroke-width=".46"/>
-      <line class="rose" x1="0" y1="0" x2="-43.8" y2="43.8" stroke-width=".46"/>
-      <line class="rose" x1="0" y1="0" x2="-62" y2="0" stroke-width=".46"/>
-      <line class="rose" x1="0" y1="0" x2="-43.8" y2="-43.8" stroke-width=".46"/>
+      <line class="rose" x1="0" y1="0" x2="0" y2="-62" stroke-width=".52"/>
+      <line class="rose" x1="0" y1="0" x2="43.8" y2="-43.8" stroke-width=".44"/>
+      <line class="rose" x1="0" y1="0" x2="62" y2="0" stroke-width=".44"/>
+      <line class="rose" x1="0" y1="0" x2="43.8" y2="43.8" stroke-width=".44"/>
+      <line class="rose" x1="0" y1="0" x2="0" y2="62" stroke-width=".44"/>
+      <line class="rose" x1="0" y1="0" x2="-43.8" y2="43.8" stroke-width=".44"/>
+      <line class="rose" x1="0" y1="0" x2="-62" y2="0" stroke-width=".44"/>
+      <line class="rose" x1="0" y1="0" x2="-43.8" y2="-43.8" stroke-width=".44"/>
 
-      <!-- gothic web arcs -->
-      <path class="rose" d="M0,-44 C14,-40 27,-34 31,-31 C34,-27 40,-14 44,0" stroke-width=".42" opacity=".52"/>
-      <path class="rose" d="M44,0 C40,14 34,27 31,31 C27,34 14,40 0,44" stroke-width=".42" opacity=".52"/>
-      <path class="rose" d="M0,44 C-14,40 -27,34 -31,31 C-34,27 -40,14 -44,0" stroke-width=".42" opacity=".52"/>
-      <path class="rose" d="M-44,0 C-40,-14 -34,-27 -31,-31 C-27,-34 -14,-40 0,-44" stroke-width=".42" opacity=".52"/>
-      <path class="rose" d="M0,-26 C8,-24 17,-21 18,-18 C21,-17 24,-8 26,0" stroke-width=".36" opacity=".45"/>
-      <path class="rose" d="M26,0 C24,8 21,17 18,18 C17,21 8,24 0,26" stroke-width=".36" opacity=".45"/>
-      <path class="rose" d="M0,26 C-8,24 -17,21 -18,18 C-21,17 -24,8 -26,0" stroke-width=".36" opacity=".45"/>
-      <path class="rose" d="M-26,0 C-24,-8 -21,-17 -18,-18 C-17,-21 -8,-24 0,-26" stroke-width=".36" opacity=".45"/>
+      <!-- curved web strands: outer ring, broken into bowed segments -->
+      <path class="rose" d="M0,-52 C16,-50 30,-46 37,-37" stroke-width=".48" opacity=".56"/>
+      <path class="rose" d="M37,-37 C46,-30 50,-16 52,0" stroke-width=".48" opacity=".56"/>
+      <path class="rose" d="M52,0 C50,16 46,30 37,37" stroke-width=".48" opacity=".56"/>
+      <path class="rose" d="M37,37 C30,46 16,50 0,52" stroke-width=".48" opacity=".56"/>
+      <path class="rose" d="M0,52 C-16,50 -30,46 -37,37" stroke-width=".48" opacity=".56"/>
+      <path class="rose" d="M-37,37 C-46,30 -50,16 -52,0" stroke-width=".48" opacity=".56"/>
+      <path class="rose" d="M-52,0 C-50,-16 -46,-30 -37,-37" stroke-width=".48" opacity=".56"/>
+      <path class="rose" d="M-37,-37 C-30,-46 -16,-50 0,-52" stroke-width=".48" opacity=".56"/>
+
+      <!-- curved web strands: middle ring, smaller and more bowed -->
+      <path class="rose" d="M0,-36 C11,-35 20,-31 26,-26" stroke-width=".42" opacity=".48"/>
+      <path class="rose" d="M26,-26 C31,-20 35,-11 36,0" stroke-width=".42" opacity=".48"/>
+      <path class="rose" d="M36,0 C35,11 31,20 26,26" stroke-width=".42" opacity=".48"/>
+      <path class="rose" d="M26,26 C20,31 11,35 0,36" stroke-width=".42" opacity=".48"/>
+      <path class="rose" d="M0,36 C-11,35 -20,31 -26,26" stroke-width=".42" opacity=".48"/>
+      <path class="rose" d="M-26,26 C-31,20 -35,11 -36,0" stroke-width=".42" opacity=".48"/>
+      <path class="rose" d="M-36,0 C-35,-11 -31,-20 -26,-26" stroke-width=".42" opacity=".48"/>
+      <path class="rose" d="M-26,-26 C-20,-31 -11,-35 0,-36" stroke-width=".42" opacity=".48"/>
+
+      <!-- curved web strands: inner ring, irregular enough to avoid target look -->
+      <path class="rose" d="M0,-21 C7,-21 13,-18 15,-15" stroke-width=".36" opacity=".44"/>
+      <path class="rose" d="M15,-15 C19,-12 21,-6 21,0" stroke-width=".36" opacity=".44"/>
+      <path class="rose" d="M21,0 C20,7 18,13 15,15" stroke-width=".36" opacity=".44"/>
+      <path class="rose" d="M15,15 C11,19 6,21 0,21" stroke-width=".36" opacity=".44"/>
+      <path class="rose" d="M0,21 C-7,20 -13,18 -15,15" stroke-width=".36" opacity=".44"/>
+      <path class="rose" d="M-15,15 C-19,11 -21,6 -21,0" stroke-width=".36" opacity=".44"/>
+      <path class="rose" d="M-21,0 C-20,-7 -18,-13 -15,-15" stroke-width=".36" opacity=".44"/>
+      <path class="rose" d="M-15,-15 C-11,-19 -6,-21 0,-21" stroke-width=".36" opacity=".44"/>
     </g>
   </defs>
 
