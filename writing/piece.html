@@ -12,10 +12,10 @@
 <link rel="stylesheet" href="../assets/css/writing.css">
 <style>
 .piece-thumb {
-  float:right;
-  width:140px;
-  max-width:35%;
-  margin:0 0 14px 22px;
+  float:left;
+  width:154px;
+  max-width:38%;
+  margin:0 22px 14px 0;
 }
 .piece-thumb img {
   display:block;
@@ -25,11 +25,21 @@
   border-radius:8px;
 }
 .piece-header .piece-actions {
+  position:relative;
   display:flex;
   justify-content:center;
   align-items:center;
-  gap:10px;
+  width:100%;
+  margin-left:auto;
+  margin-right:auto;
   text-align:center;
+}
+.piece-header .share-feedback {
+  position:absolute;
+  left:50%;
+  top:calc(100% + 8px);
+  transform:translateX(-50%);
+  white-space:nowrap;
 }
 .body-error {
   padding:18px 20px;
@@ -39,8 +49,8 @@
 @media (max-width: 640px) {
   .piece-thumb {
     float:none;
-    width:140px;
-    max-width:55%;
+    width:154px;
+    max-width:58%;
     margin:0 auto 18px;
   }
 }
@@ -221,7 +231,6 @@
       candidates.push(item.file.replace(/^\/writing\//, ''));
     }
     if (item.file && item.file.indexOf('/') !== -1) candidates.push(item.file.split('/').pop());
-    if (item.slug) candidates.push('data/pieces/' + item.slug + '.txt');
     if (item.slug) candidates.push('pieces/' + item.slug + '.md');
     if (item.slug) candidates.push(item.slug + '.md');
     return candidates.filter(function (value, index, arr) {
@@ -230,12 +239,12 @@
   }
 
   function tryFetchText(urls, index) {
-    if (index >= urls.length) throw new Error('Piece text not found. Tried: ' + urls.join(', '));
+    if (index >= urls.length) throw new Error('Piece markdown not found. Tried: ' + urls.join(', '));
     return fetch(urls[index], { cache: 'no-store' }).then(function (r) {
       if (!r.ok) throw new Error('HTTP ' + r.status + ' for ' + urls[index]);
       return r.text();
     }).catch(function (err) {
-      console.warn('Piece text candidate failed:', err.message);
+      console.warn('Piece markdown candidate failed:', err.message);
       return tryFetchText(urls, index + 1);
     });
   }
