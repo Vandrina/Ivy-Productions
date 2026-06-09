@@ -13,8 +13,9 @@
 <style>
 .piece-thumb {
   float:right;
-  width:clamp(120px, 22vw, 180px);
-  margin:0 0 16px 24px;
+  width:140px;
+  max-width:35%;
+  margin:0 0 14px 22px;
 }
 .piece-thumb img {
   display:block;
@@ -22,6 +23,13 @@
   height:auto;
   border:1px solid var(--border-soft);
   border-radius:8px;
+}
+.piece-header .piece-actions {
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  gap:10px;
+  text-align:center;
 }
 .body-error {
   padding:18px 20px;
@@ -31,7 +39,8 @@
 @media (max-width: 640px) {
   .piece-thumb {
     float:none;
-    width:min(52vw, 180px);
+    width:140px;
+    max-width:55%;
     margin:0 auto 18px;
   }
 }
