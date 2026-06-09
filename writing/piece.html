@@ -11,16 +11,29 @@
 <link rel="stylesheet" href="../assets/css/site.css">
 <link rel="stylesheet" href="../assets/css/writing.css">
 <style>
-.piece-featured {
-  width:min(100%, 520px);
-  margin:0 auto 30px;
+.piece-thumb {
+  float:right;
+  width:clamp(120px, 22vw, 180px);
+  margin:0 0 16px 24px;
 }
-.piece-featured img {
+.piece-thumb img {
   display:block;
   width:100%;
   height:auto;
   border:1px solid var(--border-soft);
   border-radius:8px;
+}
+.body-error {
+  padding:18px 20px;
+  border:1px solid var(--border-soft);
+  border-radius:8px;
+}
+@media (max-width: 640px) {
+  .piece-thumb {
+    float:none;
+    width:min(52vw, 180px);
+    margin:0 auto 18px;
+  }
 }
 </style>
 </head>
@@ -68,10 +81,6 @@
       </div>
     </header>
 
-    <figure class="piece-featured" id="pieceFeatured" hidden>
-      <img id="pieceFeaturedImage" src="" alt="">
-    </figure>
-
     <div class="piece-body" id="pieceBody">
       <p class="loading-state">Loading...</p>
     </div>
@@ -99,8 +108,6 @@
   var shareFeedback = document.getElementById('shareFeedback');
   var relatedStrip = document.getElementById('relatedStrip');
   var relatedCards = document.getElementById('relatedCards');
-  var pieceFeatured = document.getElementById('pieceFeatured');
-  var pieceFeaturedImage = document.getElementById('pieceFeaturedImage');
   var canonicalShareUrl = '';
   var currentItem = null;
 
@@ -125,14 +132,18 @@
       }
 
       renderPieceMeta(currentItem);
-      renderFeaturedImage(currentItem);
       renderRelatedLinks(currentItem);
       setCanonicalShareUrl(currentItem.slug);
-      return fetchPieceMarkdown(currentItem);
-    })
-    .then(function (markdown) {
-      if (markdown === null || typeof markdown === 'undefined') return;
-      body.innerHTML = markdownToHtml(stripFrontMatter(markdown));
+
+      return fetchPieceMarkdown(currentItem)
+        .then(function (markdown) {
+          body.innerHTML = renderFeaturedImageHtml(currentItem) + markdownToHtml(stripFrontMatter(markdown));
+        })
+        .catch(function (err) {
+          console.error('Failed to load piece body:', err);
+          showBodyError('Could not load piece text', 'The title and metadata loaded, but the body text file could not be fetched.');
+          return null;
+        });
     })
     .catch(function (err) {
       console.error('Failed to load piece:', err);
@@ -176,25 +187,10 @@
     header.hidden = false;
   }
 
-  function renderFeaturedImage(item) {
-    if (!pieceFeatured || !pieceFeaturedImage) return;
-
+  function renderFeaturedImageHtml(item) {
     var image = item['featured-image'] || item.featured_image || item.featuredImage;
-    if (!image) {
-      pieceFeatured.hidden = true;
-      return;
-    }
-
-    pieceFeatured.hidden = true;
-    pieceFeaturedImage.removeAttribute('src');
-    pieceFeaturedImage.alt = item.title ? item.title + ' featured image' : '';
-    pieceFeaturedImage.onload = function () {
-      pieceFeatured.hidden = false;
-    };
-    pieceFeaturedImage.onerror = function () {
-      pieceFeatured.hidden = true;
-    };
-    pieceFeaturedImage.src = resolveImagePath(image);
+    if (!image) return '';
+    return '<figure class="piece-thumb"><img src="' + escapeHtml(resolveImagePath(image)) + '" alt="' + escapeHtml(item.title ? item.title + ' featured image' : '') + '" onerror="this.closest(\'figure\').hidden=true"></figure>';
   }
 
   function resolveImagePath(image) {
@@ -216,6 +212,7 @@
       candidates.push(item.file.replace(/^\/writing\//, ''));
     }
     if (item.file && item.file.indexOf('/') !== -1) candidates.push(item.file.split('/').pop());
+    if (item.slug) candidates.push('data/pieces/' + item.slug + '.txt');
     if (item.slug) candidates.push('pieces/' + item.slug + '.md');
     if (item.slug) candidates.push(item.slug + '.md');
     return candidates.filter(function (value, index, arr) {
@@ -224,12 +221,12 @@
   }
 
   function tryFetchText(urls, index) {
-    if (index >= urls.length) throw new Error('Piece markdown not found. Tried: ' + urls.join(', '));
-    return fetch(urls[index]).then(function (r) {
+    if (index >= urls.length) throw new Error('Piece text not found. Tried: ' + urls.join(', '));
+    return fetch(urls[index], { cache: 'no-store' }).then(function (r) {
       if (!r.ok) throw new Error('HTTP ' + r.status + ' for ' + urls[index]);
       return r.text();
     }).catch(function (err) {
-      console.warn('Piece markdown candidate failed:', err.message);
+      console.warn('Piece text candidate failed:', err.message);
       return tryFetchText(urls, index + 1);
     });
   }
@@ -351,6 +348,10 @@
       .replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>')
       .replace(/\*([^*]+)\*/g, '<em>$1</em>')
       .replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2">$1</a>');
+  }
+
+  function showBodyError(title, desc) {
+    body.innerHTML = '<div class="body-error"><h2>' + escapeHtml(title) + '</h2><p>' + escapeHtml(desc) + '</p></div>';
   }
 
   function showError(title, desc) {
