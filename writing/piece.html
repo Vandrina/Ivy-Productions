@@ -11,6 +11,7 @@
 <link rel="stylesheet" href="../assets/css/site.css">
 <link rel="stylesheet" href="../assets/css/writing.css">
 <style>
+/* Optional piece thumbnail. Kept small and floated so the text remains primary. */
 .piece-thumb {
   float:left;
   width:154px;
@@ -24,6 +25,8 @@
   border:1px solid var(--border-soft);
   border-radius:8px;
 }
+
+/* Centers the Copy Link button without letting the hidden feedback text offset it. */
 .piece-header .piece-actions {
   position:relative;
   display:flex;
@@ -41,11 +44,15 @@
   transform:translateX(-50%);
   white-space:nowrap;
 }
+
+/* Body-only error state. This lets the title/meta stay visible if the text fetch fails. */
 .body-error {
   padding:18px 20px;
   border:1px solid var(--border-soft);
   border-radius:8px;
 }
+
+/* On narrow screens, stop floating the image so it does not crowd the text. */
 @media (max-width: 640px) {
   .piece-thumb {
     float:none;
@@ -119,8 +126,11 @@
 (function () {
   'use strict';
 
+  // The piece page is driven by the URL query string, for example: piece.html?piece=ghosting
   var params = new URLSearchParams(window.location.search);
   var pieceSlug = params.get('piece');
+
+  // Cached DOM references used by the render and error functions below.
   var header = document.getElementById('pieceHeader');
   var body = document.getElementById('pieceBody');
   var shareLinkBtn = document.getElementById('shareLinkBtn');
@@ -130,11 +140,17 @@
   var canonicalShareUrl = '';
   var currentItem = null;
 
+  // Without a slug, there is no specific piece to show, so return to the archive.
   if (!pieceSlug) {
     window.location.href = 'index.html';
     return;
   }
 
+  // Main workflow:
+  // 1. Load the manifest.
+  // 2. Find the matching piece by slug.
+  // 3. Render metadata and related links.
+  // 4. Fetch and render the markdown body.
   fetch('data/writing-manifest.json')
     .then(function (r) {
       if (!r.ok) throw new Error('HTTP ' + r.status);
@@ -154,6 +170,7 @@
       renderRelatedLinks(currentItem);
       setCanonicalShareUrl(currentItem.slug);
 
+      // Body errors are handled separately so the title/meta remain visible.
       return fetchPieceMarkdown(currentItem)
         .then(function (markdown) {
           body.innerHTML = renderFeaturedImageHtml(currentItem) + markdownToHtml(stripFrontMatter(markdown));
@@ -173,6 +190,7 @@
     shareLinkBtn.addEventListener('click', copyShareLink);
   }
 
+  // Renders title, subtitle, date, tags, and any content warning from the manifest.
   function renderPieceMeta(item) {
     document.title = (item.title || 'Writing') + ' — Ivy';
     document.getElementById('pieceTitle').textContent = item.title || '';
@@ -206,12 +224,14 @@
     header.hidden = false;
   }
 
+  // Builds the optional thumbnail markup. If the image fails, only the figure is hidden.
   function renderFeaturedImageHtml(item) {
     var image = item['featured-image'] || item.featured_image || item.featuredImage;
     if (!image) return '';
     return '<figure class="piece-thumb"><img src="' + escapeHtml(resolveImagePath(image)) + '" alt="' + escapeHtml(item.title ? item.title + ' featured image' : '') + '" onerror="this.closest(\'figure\').hidden=true"></figure>';
   }
 
+  // Bare image filenames are assumed to live in writing/images/.
   function resolveImagePath(image) {
     if (/^(https?:)?\/\//.test(image) || image.charAt(0) === '/') return image;
     if (image.indexOf('/') !== -1) return image;
@@ -223,6 +243,7 @@
     return tryFetchText(candidates, 0);
   }
 
+  // Candidate paths let the page tolerate either clean relative paths or accidental writing/ prefixes.
   function buildMarkdownCandidates(item) {
     var candidates = [];
     if (item.file) {
@@ -238,6 +259,7 @@
     });
   }
 
+  // Recursively tries each candidate markdown URL until one succeeds.
   function tryFetchText(urls, index) {
     if (index >= urls.length) throw new Error('Piece markdown not found. Tried: ' + urls.join(', '));
     return fetch(urls[index], { cache: 'no-store' }).then(function (r) {
@@ -249,6 +271,7 @@
     });
   }
 
+  // Builds lightweight navigation cards back to archive, tag, and type views.
   function renderRelatedLinks(item) {
     relatedCards.innerHTML = '';
 
@@ -278,6 +301,7 @@
     relatedStrip.hidden = false;
   }
 
+  // Normalizes the share URL to the canonical piece.html?piece=slug format.
   function setCanonicalShareUrl(slug) {
     var cleanPath = window.location.pathname.replace(/\/[^/]*$/, '/piece.html');
     canonicalShareUrl = window.location.origin + cleanPath + '?piece=' + encodeURIComponent(slug);
@@ -303,6 +327,7 @@
     fallbackCopy(url);
   }
 
+  // Fallback copy method for browsers that do not allow navigator.clipboard.
   function fallbackCopy(url) {
     var input = document.createElement('textarea');
     input.value = url;
@@ -329,10 +354,12 @@
     }, 1500);
   }
 
+  // Removes optional front matter if an older markdown file still includes it.
   function stripFrontMatter(markdown) {
     return String(markdown || '').replace(/^---\s*[\s\S]*?\n---\s*/, '');
   }
 
+  // Minimal markdown renderer for the small subset currently used by the writing pieces.
   function markdownToHtml(markdown) {
     var text = markdown.replace(/\r\n/g, '\n').trim();
     if (!text) return '';
@@ -361,6 +388,7 @@
     }).join('\n');
   }
 
+  // Escapes user/content text first, then restores the small inline markdown subset.
   function inlineMarkdown(value) {
     return escapeHtml(value)
       .replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>')
