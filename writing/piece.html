@@ -12,14 +12,16 @@
 <link rel="stylesheet" href="../assets/css/writing.css">
 <style>
 .piece-featured {
-  max-width:760px;
-  margin:0 auto 34px;
+  width:min(100%, 420px);
+  margin:0 auto 30px;
 }
 .piece-featured img {
   display:block;
   width:100%;
-  height:auto;
+  max-height:320px;
+  object-fit:cover;
   border:1px solid var(--border-soft);
+  border-radius:8px;
 }
 </style>
 </head>
@@ -127,10 +129,7 @@
       renderFeaturedImage(currentItem);
       renderRelatedLinks(currentItem);
       setCanonicalShareUrl(currentItem.slug);
-      return fetch(currentItem.file).then(function (r) {
-        if (!r.ok) throw new Error('HTTP ' + r.status);
-        return r.text();
-      });
+      return fetchPieceMarkdown(currentItem);
     })
     .then(function (markdown) {
       if (markdown === null || typeof markdown === 'undefined') return;
@@ -138,6 +137,7 @@
     })
     .catch(function (err) {
       console.error('Failed to load piece:', err);
+      if (pieceFeatured) pieceFeatured.hidden = true;
       showError('Could not load piece', 'Please return to the writing archive.');
     });
 
@@ -178,6 +178,7 @@
     header.hidden = false;
   }
 
+
   function renderFeaturedImage(item) {
     if (!pieceFeatured || !pieceFeaturedImage) return;
 
@@ -187,9 +188,49 @@
       return;
     }
 
-    pieceFeaturedImage.src = image.indexOf('/') === -1 ? 'images/' + image : image;
+    pieceFeatured.hidden = true;
+    pieceFeaturedImage.removeAttribute('src');
     pieceFeaturedImage.alt = item.title ? item.title + ' featured image' : '';
-    pieceFeatured.hidden = false;
+    pieceFeaturedImage.onload = function () {
+      pieceFeatured.hidden = false;
+    };
+    pieceFeaturedImage.onerror = function () {
+      pieceFeatured.hidden = true;
+    };
+    pieceFeaturedImage.src = resolveImagePath(image);
+  }
+
+  function resolveImagePath(image) {
+    if (/^(https?:)?\/\//.test(image) || image.charAt(0) === '/') return image;
+    if (image.indexOf('/') !== -1) return image;
+    return 'images/' + image;
+  }
+
+  function fetchPieceMarkdown(item) {
+    var candidates = buildMarkdownCandidates(item);
+    return tryFetchText(candidates, 0);
+  }
+
+  function buildMarkdownCandidates(item) {
+    var candidates = [];
+    if (item.file) candidates.push(item.file);
+    if (item.file && item.file.indexOf('/') !== -1) candidates.push(item.file.split('/').pop());
+    if (item.slug) candidates.push('pieces/' + item.slug + '.md');
+    if (item.slug) candidates.push(item.slug + '.md');
+    return candidates.filter(function (value, index, arr) {
+      return value && arr.indexOf(value) === index;
+    });
+  }
+
+  function tryFetchText(urls, index) {
+    if (index >= urls.length) throw new Error('Piece markdown not found. Tried: ' + urls.join(', '));
+    return fetch(urls[index]).then(function (r) {
+      if (!r.ok) throw new Error('HTTP ' + r.status + ' for ' + urls[index]);
+      return r.text();
+    }).catch(function (err) {
+      console.warn('Piece markdown candidate failed:', err.message);
+      return tryFetchText(urls, index + 1);
+    });
   }
 
   function renderRelatedLinks(item) {
@@ -272,8 +313,9 @@
     }, 1500);
   }
 
+
   function stripFrontMatter(markdown) {
-    return String(markdown || '').replace(/^---\s*\n[\s\S]*?\n---\s*\n?/, '');
+    return String(markdown || '').replace(/^---\s*[\s\S]*?\n---\s*/, '');
   }
 
   function markdownToHtml(markdown) {
