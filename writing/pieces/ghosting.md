@@ -1,10 +1,4 @@
----
-date: "2025-08-25T20:16:08-07:00"
-draft: false
-title: "Ghosting"
-featured_image: "ghosting.png"
-Summary: "Ghosting has the same sting as a cheap detective novel cliché: the character disappears into the fog, and the only thing left behind is the hollow echo of unanswered questions. No note, no explanation, just silence thick enough to choke on. Let’s cut through the fog. Ghosting, when nothing catastrophic has happened, isn’t clever, mysterious, or self-protective. It’s emotional immaturity dressed up as avoidance."
----
+
 
 ### The Vanishing Act of the Emotionally Unready
 
