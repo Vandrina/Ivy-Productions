@@ -12,14 +12,13 @@
 <link rel="stylesheet" href="../assets/css/writing.css">
 <style>
 .piece-featured {
-  width:min(100%, 420px);
+  width:min(100%, 520px);
   margin:0 auto 30px;
 }
 .piece-featured img {
   display:block;
   width:100%;
-  max-height:320px;
-  object-fit:cover;
+  height:auto;
   border:1px solid var(--border-soft);
   border-radius:8px;
 }
@@ -177,7 +176,6 @@
     header.hidden = false;
   }
 
-
   function renderFeaturedImage(item) {
     if (!pieceFeatured || !pieceFeaturedImage) return;
 
@@ -212,7 +210,11 @@
 
   function buildMarkdownCandidates(item) {
     var candidates = [];
-    if (item.file) candidates.push(item.file);
+    if (item.file) {
+      candidates.push(item.file);
+      candidates.push(item.file.replace(/^writing\//, ''));
+      candidates.push(item.file.replace(/^\/writing\//, ''));
+    }
     if (item.file && item.file.indexOf('/') !== -1) candidates.push(item.file.split('/').pop());
     if (item.slug) candidates.push('pieces/' + item.slug + '.md');
     if (item.slug) candidates.push(item.slug + '.md');
@@ -311,7 +313,6 @@
       shareFeedback.classList.remove('visible');
     }, 1500);
   }
-
 
   function stripFrontMatter(markdown) {
     return String(markdown || '').replace(/^---\s*[\s\S]*?\n---\s*/, '');
