@@ -346,7 +346,15 @@
   color:var(--gold-dim);
 }
 .content-warning { flex-basis:100%; color:var(--body-soft); }
-.piece-actions { display:flex; justify-content:center; align-items:center; gap:12px; margin-top:24px; }
+.piece-actions {
+  position:relative;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  width:100%;
+  margin:24px auto 0;
+  text-align:center;
+}
 .share-link-btn {
   font-family:var(--mono);
   font-size:9px;
@@ -360,7 +368,20 @@
   transition:color 220ms ease, border-color 220ms ease;
 }
 .share-link-btn:hover { color:var(--gold); border-color:#4a3a18; }
-.share-feedback { font-family:var(--mono); font-size:8.5px; letter-spacing:.2em; text-transform:uppercase; color:var(--gold-dim); opacity:0; transition:opacity 160ms ease; }
+.share-feedback {
+  position:absolute;
+  left:50%;
+  top:calc(100% + 8px);
+  transform:translateX(-50%);
+  white-space:nowrap;
+  font-family:var(--mono);
+  font-size:8.5px;
+  letter-spacing:.2em;
+  text-transform:uppercase;
+  color:var(--gold-dim);
+  opacity:0;
+  transition:opacity 160ms ease;
+}
 .share-feedback.visible { opacity:1; }
 .piece-body { max-width:640px; margin:0 auto; font-family:var(--serif); font-size:16px; line-height:1.9; color:var(--body); }
 .piece-body p,
@@ -376,11 +397,36 @@
 .piece-body a { color:var(--gold-deeper); text-decoration:none; border-bottom:1px dotted var(--gold-edge); }
 .piece-body a:hover { color:var(--gold); }
 
+.piece-thumb {
+  float:left;
+  width:154px;
+  max-width:38%;
+  margin:0 22px 14px 0;
+}
+.piece-thumb img {
+  display:block;
+  width:100%;
+  height:auto;
+  border:1px solid var(--border-soft);
+  border-radius:8px;
+}
+.body-error {
+  padding:18px 20px;
+  border:1px solid var(--border-soft);
+  border-radius:8px;
+}
+
 @media (max-width:600px) {
   .filter-row { gap:8px; }
   .filter-row .filter-label { min-width:auto; }
   .entry-title { font-size:20px; }
   .piece-actions { flex-direction:column; }
+  .piece-thumb {
+    float:none;
+    width:154px;
+    max-width:58%;
+    margin:0 auto 18px;
+  }
   .commissions,
   .related-cards { grid-template-columns:1fr; }
 }
