@@ -37,7 +37,7 @@
     "contentWarnings": [],
     "excerpt": "Respect does not mean deference. Respect is basic dignity, not servitude.",
     "sort": 30
-  }
+  },
   {
     "slug": "ghosting",
     "title": "Ghosting",
@@ -49,13 +49,13 @@
     "date": "2025-08-25",
     "tags": ["respect", "power", "boundaries", "relationships", "noir"],
     "contentWarnings": [],
-    "excerpt": "Ghosting has the same sting as a cheap detective novel cliché: the character disappears into the fog, and the only thing left behind is the hollow echo of unanswered questions. No note, no explanation, just silence thick enough to choke on. Let’s cut through the fog. Ghosting, when nothing catastrophic has happened, isn’t clever, mysterious, or self-protective. It’s emotional immaturity dressed up as avoidance.",
+    "excerpt": "Ghosting has the same sting as a cheap detective novel cliché: the character disappears into the fog, and the only thing left behind is the hollow echo of unanswered questions. No note, no explanation, just silence thick enough to choke on. Let's cut through the fog. Ghosting, when nothing catastrophic has happened, isn't clever, mysterious, or self-protective. It's emotional immaturity dressed up as avoidance.",
     "sort": 30
- 
- {
+  },
+  {
     "slug": "social-psychology",
     "title": "The Alley of Easy Answers",
-    "subtitle": "The art of disappearing.",
+    "subtitle": "Weaponized Social Media Psychology.",
     "file": "pieces/alley-of-easy-answers.md",
     "featured-image": "social-psychology.png",
     "type": "commission",
@@ -63,7 +63,7 @@
     "date": "2025-08-29",
     "tags": ["respect", "power", "boundaries", "relationships", "noir"],
     "contentWarnings": [],
-    "excerpt": "The city never sleeps, it just trades shadows. Neon signs buzz over cracked sidewalks, each one promising salvation for the right price. Step into the smoke-filled alleys of the digital bazaar and you’ll see it plain as day: vendors peddling psychology like it’s cheap whiskey, watered down and poured into chipped glasses. Everyone’s thirsty, and nobody asks what’s really in the bottle.",
+    "excerpt": "The city never sleeps, it just trades shadows. Neon signs buzz over cracked sidewalks, each one promising salvation for the right price. Step into the smoke-filled alleys of the digital bazaar and you'll see it plain as day: vendors peddling psychology like it's cheap whiskey, watered down and poured into chipped glasses. Everyone's thirsty, and nobody asks what's really in the bottle.",
     "sort": 31
-  } }
+  }
 ]
