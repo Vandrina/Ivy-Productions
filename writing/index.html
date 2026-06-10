@@ -49,9 +49,10 @@
     <div class="filter-row" id="archiveFilters">
       <span class="filter-label">Format</span>
       <div class="opts" id="formatFilters">
-        <button class="filter-chip active" type="button" data-filter="all">All <span class="count" id="allCount">0</span></button>
+        <button class="filter-chip filter-chip--format active" type="button" data-filter="all">All <span class="count" id="allCount">0</span></button>
       </div>
     </div>
+    <div class="filter-divider" aria-hidden="true"></div>
     <div class="filter-row filter-row--tags">
       <span class="filter-label">Tags</span>
       <div class="opts opts--tight" id="tagFilters"></div>
@@ -198,7 +199,7 @@
     var types = Array.from(new Set(items.map(function (item) { return item.type; }).filter(Boolean)));
     types.forEach(function (type) {
       var button = document.createElement('button');
-      button.className = 'filter-chip';
+      button.className = 'filter-chip filter-chip--format';
       button.type = 'button';
       button.dataset.filter = type;
       button.innerHTML = escapeHtml(formatLabel(type)) + ' <span class="count">' + countByType(type) + '</span>';
@@ -211,7 +212,7 @@
       button.className = 'filter-chip filter-chip--tag';
       button.type = 'button';
       button.dataset.tag = tag;
-      button.textContent = '#' + tag;
+      button.textContent = tag;
       tagFilters.appendChild(button);
     });
 
@@ -257,19 +258,21 @@
       card.className = 'entry';
       card.href = 'piece.html?piece=' + encodeURIComponent(item.slug);
       card.innerHTML =
-        '<div class="entry-meta">' +
-          '<span class="format">' + escapeHtml(formatLabel(item.type || 'Writing')) + '</span>' +
-          (item.date ? '<span>' + escapeHtml(formatDate(item.date)) + '</span>' : '') +
-          (item.wordCount ? '<span class="dot"></span><span>~ ' + escapeHtml(item.wordCount) + ' words</span>' : '') +
-          (item.readingTime ? '<span class="dot"></span><span>~ ' + escapeHtml(item.readingTime) + ' min</span>' : '') +
+        '<div class="entry-head">' +
+          '<div class="entry-meta-stack">' +
+            '<span class="format">' + escapeHtml(formatLabel(item.type || 'Writing')) + '</span>' +
+            (item.date ? '<span>' + escapeHtml(formatDate(item.date)) + '</span>' : '') +
+            (item.wordCount ? '<span>~ ' + escapeHtml(item.wordCount) + ' words</span>' : '') +
+            (item.readingTime ? '<span>~ ' + escapeHtml(item.readingTime) + ' min</span>' : '') +
+          '</div>' +
+          renderTags(item.tags || []) +
         '</div>' +
         '<h2 class="entry-title">' + escapeHtml(item.title || '') + '</h2>' +
-        '<p class="entry-excerpt">' + escapeHtml(item.excerpt || '') + '</p>' +
-        renderTags(item.tags || []);
+        '<p class="entry-excerpt">' + escapeHtml(item.excerpt || '') + '</p>';
       grid.appendChild(card);
     });
 
-    count.textContent = visible.length + ' of ' + manifest.length + ' · writing-manifest.json';
+    count.textContent = visible.length + ' of ' + manifest.length + ' pieces';
     emptyState.hidden = visible.length !== 0;
   }
 
