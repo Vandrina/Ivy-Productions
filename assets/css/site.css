@@ -176,6 +176,44 @@ body[data-screen-label="Ivy — Home"] .writing-watermark { top:82px; }
 body[data-screen-label="Writing — Archive"] .writing-watermark,
 body[data-screen-label="Writing — Piece"] .writing-watermark { top:168px; }
 
+body .filter-divider {
+  width:min(260px, 70%);
+  height:1px;
+  margin:3px auto 16px;
+  background:linear-gradient(to right, transparent, var(--gold-line), transparent);
+}
+body .filter-chip--format {
+  font-size:9.5px;
+  padding:8px 16px;
+}
+body .entry-head {
+  display:flex;
+  justify-content:space-between;
+  align-items:flex-start;
+  gap:18px;
+  margin-bottom:12px;
+}
+body .entry-meta-stack {
+  display:flex;
+  flex-direction:column;
+  gap:5px;
+  font-family:var(--mono);
+  font-size:8.5px;
+  letter-spacing:.26em;
+  color:var(--gold-dim);
+  text-transform:uppercase;
+}
+body .entry-tags {
+  justify-content:flex-end;
+  gap:7px;
+  max-width:42%;
+  margin-top:0;
+  text-align:right;
+}
+body .entry-tag::before,
+body .entry-tags span::before,
+body .related-tag::before { content:none; }
+
 @media (max-width:600px) {
   .mainnav { font-size:8.5px; column-gap:12px; }
   .mainnav .brand-wordmark { font-size:18px; }
@@ -184,9 +222,11 @@ body[data-screen-label="Writing — Piece"] .writing-watermark { top:168px; }
   .door .door-title { font-size:24px; }
   .featured-card-head { display:block; }
   .featured-tags { justify-content:flex-start; max-width:none; margin-top:12px; text-align:left; }
+  body .entry-head { display:block; }
+  body .entry-tags { justify-content:flex-start; max-width:none; margin:12px 0 0; text-align:left; }
   body[data-screen-label] .writing-watermark { width:128vw; }
   body[data-screen-label="Ivy — Home"] .writing-watermark { top:92px; }
-  body[data-screen-label="Writing — Archive"],
+  body[data-screen-label="Writing — Archive"] .writing-watermark,
   body[data-screen-label="Writing — Piece"] .writing-watermark { top:150px; }
 }
 @media (max-width:540px) { .doors { grid-template-columns:1fr; } }
