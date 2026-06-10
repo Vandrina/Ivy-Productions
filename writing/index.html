@@ -130,29 +130,6 @@
     <a class="return right" href="#">Begin a commission</a>
   </div>
 
-  <!--
-  <div class="related-strip">
-    <div class="related-eyebrow">— If this resonates, try —</div>
-    <div class="related-cards">
-      <a class="related-card" href="#">
-        <div class="related-section">Yoga</div>
-        <div class="related-title">[ class or sequence aligned with these tags ]</div>
-        <div class="related-tag">somatic</div>
-      </a>
-      <a class="related-card" href="#">
-        <div class="related-section">Shop</div>
-        <div class="related-title">[ good or access pass thematically linked ]</div>
-        <div class="related-tag">craft</div>
-      </a>
-      <a class="related-card" href="#">
-        <div class="related-section">Web Work</div>
-        <div class="related-title">[ case study with adjacent subject matter ]</div>
-        <div class="related-tag">devotion</div>
-      </a>
-    </div>
-  </div>
-  -->
-
   <div style="text-align:center;margin-top:32px;">
     <img class="ivy ft flip" src="../assets/site-images/ivy-ornament.png" alt="" aria-hidden="true">
     <div class="footer-line">Ivy · Writing Archive</div>
@@ -258,17 +235,15 @@
       card.className = 'entry';
       card.href = 'piece.html?piece=' + encodeURIComponent(item.slug);
       card.innerHTML =
-        '<div class="entry-head">' +
-          '<div class="entry-meta-stack">' +
-            '<span class="format">' + escapeHtml(formatLabel(item.type || 'Writing')) + '</span>' +
-            (item.date ? '<span>' + escapeHtml(formatDate(item.date)) + '</span>' : '') +
-            (item.wordCount ? '<span>~ ' + escapeHtml(item.wordCount) + ' words</span>' : '') +
-            (item.readingTime ? '<span>~ ' + escapeHtml(item.readingTime) + ' min</span>' : '') +
-          '</div>' +
-          renderTags(item.tags || []) +
+        '<div class="entry-meta">' +
+          '<span class="format">' + escapeHtml(formatLabel(item.type || 'Writing')) + '</span>' +
+          (item.date ? '<span>' + escapeHtml(formatDate(item.date)) + '</span>' : '') +
+          (item.wordCount ? '<span class="dot"></span><span>~ ' + escapeHtml(item.wordCount) + ' words</span>' : '') +
+          (item.readingTime ? '<span class="dot"></span><span>~ ' + escapeHtml(item.readingTime) + ' min</span>' : '') +
         '</div>' +
         '<h2 class="entry-title">' + escapeHtml(item.title || '') + '</h2>' +
-        '<p class="entry-excerpt">' + escapeHtml(item.excerpt || '') + '</p>';
+        '<p class="entry-excerpt">' + escapeHtml(item.excerpt || '') + '</p>' +
+        renderTags(item.tags || []);
       grid.appendChild(card);
     });
 
