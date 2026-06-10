@@ -65,8 +65,8 @@ a { color:inherit; }
 .mainnav-links a.current::after { content:''; position:absolute; left:14px; right:14px; bottom:4px; height:1px; background:var(--gold); opacity:.55; }
 
 .subnav {
-  position:sticky; top:70px; z-index:45; display:flex; align-items:center; justify-content:center; flex-wrap:wrap;
-  row-gap:26px; column-gap:22px; max-width:1080px; margin:0 auto 56px; padding:12px 8px;
+  position:sticky; top:86px; z-index:45; display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap;
+  row-gap:26px; column-gap:22px; max-width:1080px; margin:40px auto 72px; padding:0 8px;
   background:rgba(25,26,28,.94);
   backdrop-filter:blur(8px);
   font-family:var(--mono); font-size:9.5px; letter-spacing:.28em; text-transform:uppercase;
@@ -186,30 +186,6 @@ body .filter-chip--format {
   font-size:9.5px;
   padding:8px 16px;
 }
-body .entry-head {
-  display:flex;
-  justify-content:space-between;
-  align-items:flex-start;
-  gap:18px;
-  margin-bottom:12px;
-}
-body .entry-meta-stack {
-  display:flex;
-  flex-direction:column;
-  gap:5px;
-  font-family:var(--mono);
-  font-size:8.5px;
-  letter-spacing:.26em;
-  color:var(--gold-dim);
-  text-transform:uppercase;
-}
-body .entry-tags {
-  justify-content:flex-end;
-  gap:7px;
-  max-width:42%;
-  margin-top:0;
-  text-align:right;
-}
 body .entry-tag::before,
 body .entry-tags span::before,
 body .related-tag::before { content:none; }
@@ -218,12 +194,10 @@ body .related-tag::before { content:none; }
   .mainnav { font-size:8.5px; column-gap:12px; }
   .mainnav .brand-wordmark { font-size:18px; }
   .mainnav-links a { padding:8px 9px; }
-  .subnav { top:62px; }
+  .subnav { top:76px; }
   .door .door-title { font-size:24px; }
   .featured-card-head { display:block; }
   .featured-tags { justify-content:flex-start; max-width:none; margin-top:12px; text-align:left; }
-  body .entry-head { display:block; }
-  body .entry-tags { justify-content:flex-start; max-width:none; margin:12px 0 0; text-align:left; }
   body[data-screen-label] .writing-watermark { width:128vw; }
   body[data-screen-label="Ivy — Home"] .writing-watermark { top:92px; }
   body[data-screen-label="Writing — Archive"] .writing-watermark,
